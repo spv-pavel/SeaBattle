@@ -1,11 +1,8 @@
 from myclass import Ship
 from random import randrange
-import time
 
 
 def field_print(field_):
-    print()
-    # print(field_.__str__)
     print(' ', end=' ')
     for i_ in range(0, len(field_[0])):  # range(1, len(_field[0]) + 1)
         print(i_, end=' ')
@@ -58,7 +55,7 @@ def ships_place_rnd(ships_, field_):
                         #    field_[y][x] = '*'
                 if check2_ == 1:
                     for i in range(ship_.size):
-                        field_[ship_.y][ship_.x + i] = ship_.name
+                        field_[ship_.y][ship_.x + i] = '■'  # ship_.name
                 if n_ > 100:
                     check1_ = 0
                     field_clear(field_)
