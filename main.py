@@ -7,14 +7,14 @@ def field_print(field_):
         print('player:')
     if field_ == field_computer:
         print('computer:')
-    print(' ', end=' ')
+    print('  |', end=' ')
     for i_ in range(1, len(field_[0]) + 1):
-        print(i_, end=' ')
+        print(i_, '|', end=' ')
     print('\n', end='')
     for ny_, y_ in enumerate(range(len(field_))):
-        print(ny_ + 1, end=' ')
+        print(ny_ + 1, '|', end=' ')
         for x_ in range(len(field_[y_])):
-            print(field_[y_][x_], end=' ')
+            print(field_[y_][x_], '|', end=' ')
         print('\n', end='')
     return ''
 
@@ -115,4 +115,5 @@ field_computer = [['0' for x1 in range(6)] for y1 in range(6)]
 ships_place_rnd(ships_player, field_player)
 ships_place_rnd(ships_computer, field_computer)
 
-hit_player(field_computer)
+for i in range(3):
+    hit_player(field_computer)
