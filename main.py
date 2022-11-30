@@ -8,11 +8,11 @@ def field_print(field_):
     if field_ == field_computer:
         print('computer:')
     print(' ', end=' ')
-    for i_ in range(0, len(field_[0])):  # range(1, len(_field[0]) + 1)
+    for i_ in range(1, len(field_[0]) + 1):
         print(i_, end=' ')
     print('\n', end='')
     for ny_, y_ in enumerate(range(len(field_))):
-        print(ny_, end=' ')  # ny_ + 1
+        print(ny_ + 1, end=' ')
         for x_ in range(len(field_[y_])):
             print(field_[y_][x_], end=' ')
         print('\n', end='')
@@ -67,6 +67,15 @@ def ships_place_rnd(ships_, field_):
     return True
 
 
+def check_range_hit(hit_yx_):
+    if len(hit_yx_) != 2:
+        return f'Введите две цифры через пробел:'
+    if (hit_yx_[0] < 1 or hit_yx_[0] > 6 or
+            hit_yx_[1] < 1 or hit_yx_[1] > 6):
+        return f'Введите y x в диапазоне от 1 до 6:'
+    return True
+
+
 # army player
 p_ship3_1 = Ship(0, 1, 3, 1)  # three-deck ship
 p_ship2_1 = Ship(1, 1, 2, 2)  # two-deck ship
@@ -93,3 +102,7 @@ ships_place_rnd(ships_player, field_player)
 ships_place_rnd(ships_computer, field_computer)
 print(field_print(field_player), end='')
 print(field_print(field_computer), end='')
+player_hit_yx = [1, 1]  # list(map(int, input('Удар y, x: ').split()))
+print(check_range_hit(player_hit_yx))
+if check_range_hit(player_hit_yx):
+    print(player_hit_yx)
