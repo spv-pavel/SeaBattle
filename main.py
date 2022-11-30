@@ -4,9 +4,9 @@ from random import randrange
 
 def field_print(field_):
     if field_ == field_player:
-        print('player:')
+        print('поле игрока:')
     if field_ == field_computer:
-        print('computer:')
+        print('поле компьютера:')
     print('  |', end=' ')
     for i_ in range(1, len(field_[0]) + 1):
         print(i_, '|', end=' ')
@@ -64,46 +64,47 @@ def ships_place_rnd(ships_, field_):
                     check1_ = 0
                     field_clear(field_)
                     break
-    print(field_print(field_), end='')
     return True
 
 
-def hit_player(field_):
-    hit_yx_ = list(map(int, input('Удар y, x: ').split()))
-    if len(hit_yx_) != 2:
-        print('Введите две цифры через пробел:')
-        return False
-    y_, x_ = hit_yx_[0], hit_yx_[1]
-    if (y_ < 1 or y_ > 6 or
-            x_ < 1 or x_ > 6):
-        print('Введите y x в диапазоне от 1 до 6:')
-        return False
-    if (field_[y_ - 1][x_ - 1] == 'X' or
-            field_[y_ - 1][x_ - 1] == 'T'):
-        print('Повтор, введите другие координаты y x:')
-        return False
-    print(f'Удар y={hit_yx_[0]} x={x_}')
-    if field_[y_ - 1][x_ - 1] == '■':
-        field_[y_ - 1][x_ - 1] = 'X'
-    else:
-        field_[y_ - 1][x_ - 1] = 'T'
-    print(field_print(field_), end='')
-    return True
-
-
-def hit_computer(field_):
+def hit_player(field_computer_):
     while True:
-        y_, x_ = randrange(3) + 1, randrange(3) + 1
-        if (field_[y_ - 1][x_ - 1] == 'X' or
-                field_[y_ - 1][x_ - 1] == 'T'):
+        y_, x_ = int, int
+        hit_yx_ = list(map(int, input('Удар игрока y, x: ').split()))
+        if len(hit_yx_) != 2:
+            print('Введите две цифры через пробел:')
+            continue
+        y_, x_ = hit_yx_[0], hit_yx_[1]
+        if (y_ < 1 or y_ > 6 or
+                x_ < 1 or x_ > 6):
+            print('Введите y, x в диапазоне от 1 до 6:')
+            continue
+        if (field_computer_[y_ - 1][x_ - 1] == 'X' or
+                field_computer_[y_ - 1][x_ - 1] == 'T'):
+            print('Повтор, введите другие координаты y, x:')
+            continue
+        break
+    if field_computer_[y_ - 1][x_ - 1] == '■':
+        field_computer_[y_ - 1][x_ - 1] = 'X'
+    else:
+        field_computer_[y_ - 1][x_ - 1] = 'T'
+    print(field_print(field_computer_), end='')
+    return True
+
+
+def hit_computer(field_player_):
+    while True:
+        y_, x_ = randrange(6) + 1, randrange(6) + 1
+        if (field_player_[y_ - 1][x_ - 1] == 'X' or
+                field_player_[y_ - 1][x_ - 1] == 'T'):
             continue
         else:
             break
-    if field_[y_ - 1][x_ - 1] == '■':
-        field_[y_ - 1][x_ - 1] = 'X'
+    if field_player_[y_ - 1][x_ - 1] == '■':
+        field_player_[y_ - 1][x_ - 1] = 'X'
     else:
-        field_[y_ - 1][x_ - 1] = 'T'
-    print(field_print(field_), end='')
+        field_player_[y_ - 1][x_ - 1] = 'T'
+    print(field_print(field_player_), end='')
     return True
 
 
@@ -131,7 +132,9 @@ field_computer = [['0' for x1 in range(6)] for y1 in range(6)]
 
 ships_place_rnd(ships_player, field_player)
 ships_place_rnd(ships_computer, field_computer)
+field_print(field_computer)
+field_print(field_player)
 
-# for i in range(3):
-#    hit_player(field_computer)
-hit_computer(field_player)
+while True:
+    hit_player(field_computer)
+    hit_computer(field_player)
