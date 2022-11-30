@@ -1,3 +1,4 @@
+# working version 22 11 30
 from myclass import Ship
 from random import randrange
 
