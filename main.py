@@ -3,6 +3,10 @@ from random import randrange
 
 
 def field_print(field_):
+    if field_ == field_player:
+        print('player:')
+    if field_ == field_computer:
+        print('computer:')
     print(' ', end=' ')
     for i_ in range(0, len(field_[0])):  # range(1, len(_field[0]) + 1)
         print(i_, end=' ')
@@ -86,4 +90,6 @@ field_player = [['0' for x in range(6)] for y in range(6)]
 field_computer = [['0' for x1 in range(6)] for y1 in range(6)]
 
 ships_place_rnd(ships_player, field_player)
+ships_place_rnd(ships_computer, field_computer)
 print(field_print(field_player), end='')
+print(field_print(field_computer), end='')
