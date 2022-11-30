@@ -108,23 +108,27 @@ def hit_computer(field_player_):
     return True
 
 
+def check_victory(field_):
+    pass
+
+
 # army player
-p_ship3_1 = Ship(0, 1, 3, 1)  # three-deck ship
-p_ship2_1 = Ship(1, 1, 2, 2)  # two-deck ship
-p_ship2_2 = Ship(2, 1, 2, 3)  # two-deck ship
-p_ship1_1 = Ship(3, 1, 1, 4)  # one-deck ship
-p_ship1_2 = Ship(4, 1, 1, 5)  # one-deck ship
-p_ship1_3 = Ship(5, 1, 1, 6)  # one-deck ship
-p_ship1_4 = Ship(5, 3, 1, 7)  # one-deck ship
+p_ship3_1 = Ship(0, 1, 3)  # three-deck ship
+p_ship2_1 = Ship(1, 1, 2)  # two-deck ship
+p_ship2_2 = Ship(2, 1, 2)  # two-deck ship
+p_ship1_1 = Ship(3, 1, 1)  # one-deck ship
+p_ship1_2 = Ship(4, 1, 1)  # one-deck ship
+p_ship1_3 = Ship(5, 1, 1)  # one-deck ship
+p_ship1_4 = Ship(5, 3, 1)  # one-deck ship
 ships_player = [p_ship3_1, p_ship2_1, p_ship2_2, p_ship1_1, p_ship1_2, p_ship1_3, p_ship1_4]
 # army computer
-c_ship3_1 = Ship(0, 0, 3, 1)  # three-deck ship
-c_ship2_1 = Ship(1, 0, 2, 2)  # two-deck ship
-c_ship2_2 = Ship(2, 0, 2, 3)  # two-deck ship
-c_ship1_1 = Ship(3, 0, 1, 4)  # one-deck ship
-c_ship1_2 = Ship(4, 0, 1, 5)  # one-deck ship
-c_ship1_3 = Ship(5, 0, 1, 6)  # one-deck ship
-c_ship1_4 = Ship(5, 2, 1, 7)  # one-deck ship
+c_ship3_1 = Ship(0, 0, 3)  # three-deck ship
+c_ship2_1 = Ship(1, 0, 2)  # two-deck ship
+c_ship2_2 = Ship(2, 0, 2)  # two-deck ship
+c_ship1_1 = Ship(3, 0, 1)  # one-deck ship
+c_ship1_2 = Ship(4, 0, 1)  # one-deck ship
+c_ship1_3 = Ship(5, 0, 1)  # one-deck ship
+c_ship1_4 = Ship(5, 2, 1)  # one-deck ship
 ships_computer = [c_ship3_1, c_ship2_1, c_ship2_2, c_ship1_1, c_ship1_2, c_ship1_3, c_ship1_4]
 
 field_player = [['0' for x in range(6)] for y in range(6)]
