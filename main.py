@@ -67,6 +67,14 @@ def ships_place_rnd(ships_, field_):
     return True
 
 
+def check_victory(field_):
+    for y_ in range(6):
+        for x_ in range(6):
+            if field_[y_][x_] == '■':
+                return False
+    return True
+
+
 def hit_player(field_computer_):
     while True:
         y_, x_ = int, int
@@ -108,10 +116,6 @@ def hit_computer(field_player_):
     return True
 
 
-def check_victory(field_):
-    pass
-
-
 # army player
 p_ship3_1 = Ship(0, 1, 3)  # three-deck ship
 p_ship2_1 = Ship(1, 1, 2)  # two-deck ship
@@ -141,4 +145,9 @@ field_print(field_player)
 
 while True:
     hit_player(field_computer)
+    if check_victory(field_computer):
+        print('ВЫ ПОБЕДИЛИ!!!')
+        break
     hit_computer(field_player)
+    if check_victory(field_player):
+        print('ВЫ ПРОИГРАЛИ :(((')
