@@ -92,7 +92,19 @@ def hit_player(field_):
 
 
 def hit_computer(field_):
-    pass
+    while True:
+        y_, x_ = randrange(3) + 1, randrange(3) + 1
+        if (field_[y_ - 1][x_ - 1] == 'X' or
+                field_[y_ - 1][x_ - 1] == 'T'):
+            continue
+        else:
+            break
+    if field_[y_ - 1][x_ - 1] == '■':
+        field_[y_ - 1][x_ - 1] = 'X'
+    else:
+        field_[y_ - 1][x_ - 1] = 'T'
+    print(field_print(field_), end='')
+    return True
 
 
 # army player
@@ -120,5 +132,6 @@ field_computer = [['0' for x1 in range(6)] for y1 in range(6)]
 ships_place_rnd(ships_player, field_player)
 ships_place_rnd(ships_computer, field_computer)
 
-for i in range(3):
-    hit_player(field_computer)
+# for i in range(3):
+#    hit_player(field_computer)
+hit_computer(field_player)
