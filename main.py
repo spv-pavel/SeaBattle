@@ -73,21 +73,26 @@ def hit_player(field_):
     if len(hit_yx_) != 2:
         print('Введите две цифры через пробел:')
         return False
-    if (hit_yx_[0] < 1 or hit_yx_[0] > 6 or
-            hit_yx_[1] < 1 or hit_yx_[1] > 6):
+    y_, x_ = hit_yx_[0], hit_yx_[1]
+    if (y_ < 1 or y_ > 6 or
+            x_ < 1 or x_ > 6):
         print('Введите y x в диапазоне от 1 до 6:')
         return False
-    if (field_[hit_yx_[0] - 1][hit_yx_[1] - 1] == 'X' or
-            field_[hit_yx_[0] - 1][hit_yx_[1] - 1] == 'T'):
+    if (field_[y_ - 1][x_ - 1] == 'X' or
+            field_[y_ - 1][x_ - 1] == 'T'):
         print('Повтор, введите другие координаты y x:')
         return False
-    print(f'Удар y={hit_yx_[0]} x={hit_yx_[1]}')
-    if field_[hit_yx_[0] - 1][hit_yx_[1] - 1] == '■':
-        field_[hit_yx_[0] - 1][hit_yx_[1] - 1] = 'X'
+    print(f'Удар y={hit_yx_[0]} x={x_}')
+    if field_[y_ - 1][x_ - 1] == '■':
+        field_[y_ - 1][x_ - 1] = 'X'
     else:
-        field_[hit_yx_[0] - 1][hit_yx_[1] - 1] = 'T'
+        field_[y_ - 1][x_ - 1] = 'T'
     print(field_print(field_), end='')
     return True
+
+
+def hit_computer(field_):
+    pass
 
 
 # army player
