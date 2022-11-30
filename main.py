@@ -64,15 +64,29 @@ def ships_place_rnd(ships_, field_):
                     check1_ = 0
                     field_clear(field_)
                     break
+    print(field_print(field_), end='')
     return True
 
 
-def check_range_hit(hit_yx_):
+def hit_player(field_):
+    hit_yx_ = list(map(int, input('Удар y, x: ').split()))
     if len(hit_yx_) != 2:
-        return f'Введите две цифры через пробел:'
+        print('Введите две цифры через пробел:')
+        return False
     if (hit_yx_[0] < 1 or hit_yx_[0] > 6 or
             hit_yx_[1] < 1 or hit_yx_[1] > 6):
-        return f'Введите y x в диапазоне от 1 до 6:'
+        print('Введите y x в диапазоне от 1 до 6:')
+        return False
+    if (field_[hit_yx_[0] - 1][hit_yx_[1] - 1] == 'X' or
+            field_[hit_yx_[0] - 1][hit_yx_[1] - 1] == 'T'):
+        print('Повтор, введите другие координаты y x:')
+        return False
+    print(f'Удар y={hit_yx_[0]} x={hit_yx_[1]}')
+    if field_[hit_yx_[0] - 1][hit_yx_[1] - 1] == '■':
+        field_[hit_yx_[0] - 1][hit_yx_[1] - 1] = 'X'
+    else:
+        field_[hit_yx_[0] - 1][hit_yx_[1] - 1] = 'T'
+    print(field_print(field_), end='')
     return True
 
 
@@ -100,9 +114,5 @@ field_computer = [['0' for x1 in range(6)] for y1 in range(6)]
 
 ships_place_rnd(ships_player, field_player)
 ships_place_rnd(ships_computer, field_computer)
-print(field_print(field_player), end='')
-print(field_print(field_computer), end='')
-player_hit_yx = [1, 1]  # list(map(int, input('Удар y, x: ').split()))
-print(check_range_hit(player_hit_yx))
-if check_range_hit(player_hit_yx):
-    print(player_hit_yx)
+
+hit_player(field_computer)
