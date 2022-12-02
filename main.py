@@ -79,7 +79,11 @@ def check_victory(field_):
 def hit_player(field_computer_):
     while True:
         y_, x_ = int, int
-        hit_yx_ = list(map(int, input('Удар игрока y, x: ').split()))
+        try:
+            hit_yx_ = list(map(int, input('Удар игрока y, x: ').split()))
+        except ValueError:
+            print('Введите y, x в диапазоне от 1 до 6:')
+            continue
         if len(hit_yx_) != 2:
             print('Введите две цифры через пробел:')
             continue
