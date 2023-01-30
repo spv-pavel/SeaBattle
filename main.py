@@ -156,3 +156,4 @@ while True:
     hit_computer(field_player)
     if check_victory(field_player):
         print('ВЫ ПРОИГРАЛИ :(((')
+        break
